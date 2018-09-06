@@ -2,6 +2,6 @@
 
 {% block content %}
     {% for artist in artists %}
-    <div><p>{{ artist.name }}</p></div>
+    <div><a href="/{{ artist.shortname }}">{{ artist.name }}</a></div>
     {% endfor %}
 {% endblock %}

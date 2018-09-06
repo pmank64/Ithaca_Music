@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ artistinfo[0].name }}</h2>
+    <br>
+    <img src="{{ artistinfo[0].imgURL }}">
+    <h3>Home Town:</h3>
+    <p>{{ artistinfo[0].hometown }}</p>
+    <br>
+    <h3>Bio:</h3>
+    <p>{{ artistinfo[0].bio }}</p>
+    <br>
+    <h3>Upcoming Events:</h3>
+    <h4>{{ artistinfo[0].event }}</h4>
+    <p>{{ artistinfo[0].eventDesc }}</p>
+{% endblock %}
