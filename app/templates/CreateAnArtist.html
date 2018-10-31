@@ -1,28 +1,13 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+{% block app_content %}
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-12">
     <h2>Create a New Artist</h2>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.name.label }}
-            <br>
-            {{ form.name() }}
-        </p>
-
-        <p>
-            {{ form.hometown.label }}
-            <br>
-            {{ form.hometown() }}
-        </p>
-
-        <p>
-            {{ form.description.label }}
-            <br>
-            {{ form.description() }}
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
-    </form>
+    {{ wtf.quick_form(form) }}
+    </div>
+    </div>
+    </div>
 {% endblock %}

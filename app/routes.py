@@ -26,7 +26,7 @@ def index():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    form = LoginForm()
+    form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
@@ -50,7 +50,7 @@ def logout():
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    form = RegistrationForm()
+    form = RegistrationForm(request.form)
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
@@ -78,7 +78,7 @@ def artist(name):
 @app.route('/CreateAnArtist', methods=['GET', 'POST'])
 @login_required
 def create():
-    form = NewArtistForm()
+    form = NewArtistForm(request.form)
     if form.validate_on_submit():
         artist = Artist(name=form.name.data, hometown=form.hometown.data, description=form.description.data)
         db.session.add(artist)
@@ -91,7 +91,7 @@ def create():
 @app.route('/CreateAVenue', methods=['GET', 'POST'])
 @login_required
 def createVenue():
-    form = NewVenueForm()
+    form = NewVenueForm(request.form)
     if request.method == 'POST':
         venue = Venue(name=form.name.data, street=form.street.data, city=form.city.data, state=form.state.data, zip=form.zip.data)
         db.session.add(venue)
@@ -108,7 +108,7 @@ def createEvent():
     # venueArray = []
     # for venue in venuesQ:
     #     venueArray.append((venue.venue_id, venue.name))
-    form = NewEventForm()
+    form = NewEventForm(request.form)
     form.set_choices()
     # venuesQ = Venue.query.all()
     # venueArray = []

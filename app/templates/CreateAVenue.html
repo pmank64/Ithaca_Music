@@ -1,33 +1,41 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+{% block app_content %}
+        <div class="container-fluid">
+    <div class="row">
+    <div class="col-12">
     <h2>Create a New Artist</h2>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.name.label }}
-            <br>
-            {{ form.name() }}
-        </p>
-
-        <p>
-            {{ form.street.label }}
-            <br>
-            {{ form.street() }}
-        </p>
-
-        <p>
-            {{ form.city.label }}
-            <br>
-            {{ form.state() }}
-        </p>
-        <p>
-            {{ form.zip.label }}
-            <br>
-            {{ form.zip() }}
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
-    </form>
+    {{ wtf.quick_form(form) }}
+    </div>
+    </div>
+     </div>
+{#    <form action="" method="post">#}
+{#        {{ form.hidden_tag() }}#}
+{#        <p>#}
+{#            {{ form.name.label }}#}
+{#            <br>#}
+{#            {{ form.name() }}#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#            {{ form.street.label }}#}
+{#            <br>#}
+{#            {{ form.street() }}#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#            {{ form.city.label }}#}
+{#            <br>#}
+{#            {{ form.state() }}#}
+{#        </p>#}
+{#        <p>#}
+{#            {{ form.zip.label }}#}
+{#            <br>#}
+{#            {{ form.zip() }}#}
+{#        </p>#}
+{#        <p>#}
+{#            {{ form.submit() }}#}
+{#        </p>#}
+{#    </form>#}
 {% endblock %}

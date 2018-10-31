@@ -1,40 +1,48 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+{% block app_content %}
+      <div class="container-fluid">
+    <div class="row">
+    <div class="col-12">
     <h2>Create a New Event</h2>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-
-        <p>
-            {{ form.name.label }}
-            <br>
-            {{ form.name() }}
-        </p>
-
-        <p>
-            {{ form.date.label }}
-            <br>
-            {{ form.date() }}
-        </p>
-
-        <p>
-            {{ form.venueField.label }}
-            <br>
-        </p>
-        <p>
-            {{ form.venueField() }}
-
-        </p>
-         <p>
-            {{ form.artistField.label }}
-            <br>
-        </p>
-        <p>
-            {{ form.artistField() }}
-
-        </p>
-        <p>
-            {{ form.submit() }}
-        </p>
-    </form>
+    {{ wtf.quick_form(form) }}
+    </div>
+   </div>
+      </div>
+{#    <form action="" method="post" novalidate>#}
+{#        {{ form.hidden_tag() }}#}
+{##}
+{#        <p>#}
+{#            {{ form.name.label }}#}
+{#            <br>#}
+{#            {{ form.name() }}#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#            {{ form.date.label }}#}
+{#            <br>#}
+{#            {{ form.date() }}#}
+{#        </p>#}
+{##}
+{#        <p>#}
+{#            {{ form.venueField.label }}#}
+{#            <br>#}
+{#        </p>#}
+{#        <p>#}
+{#            {{ form.venueField() }}#}
+{##}
+{#        </p>#}
+{#         <p>#}
+{#            {{ form.artistField.label }}#}
+{#            <br>#}
+{#        </p>#}
+{#        <p>#}
+{#            {{ form.artistField() }}#}
+{##}
+{#        </p>#}
+{#        <p>#}
+{#            {{ form.submit() }}#}
+{#        </p>#}
+{#    </form>#}
 {% endblock %}

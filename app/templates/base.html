@@ -1,41 +1,118 @@
 {% extends "bootstrap/base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% if title %}
-    <title>{{ title }} - Local Artists</title>
-    {% else %}
-    <title>Local Artists</title>
-    {% endif %}
-</head>
-<body>
 
-    <h1>Artists Meet CS</h1>
-    <div>
-        {% if current_user.is_authenticated %}
-        <a href="/index">Home</a>
-        <a href="/artistlist">Artist List</a>
-        <a href="/CreateAnArtist">Create An Artist</a>
-        <a href="/CreateAnEvent">Create An Event</a>
-        <a href="/CreateAVenue">Create A Venue</a>
-        <a href="/logout">Log Out</a>
-        {% endif %}
-        {% if not current_user.is_authenticated %}
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-        {% endif %}
-    </div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
+{% block title %}
+    {% if title %}{{ title }} - Ithaca Music{% else %}Welcome to Ithaca Music{% endif %}
+{% endblock %}
+
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/index">Ithaca Music</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+         {% if current_user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/index">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/artistlist">Artist List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/CreateAnArtist">Create an Artist</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/CreateAnEvent">Create an Event</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/CreateAVenue">Create a Venue</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+
+        </li>
+         {% endif %}
+    {% if not current_user.is_authenticated %}
+        <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+     {% endif %}
     </ul>
-    {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
-</body>
-</html>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+        {{ message }}
+        </div>
+    {% endfor %}
+
+{% endif %}
+{% endwith %}
+    {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
+
+
+
+{#{% block message_content %}#}
+{##}
+{#{% endblock %}#}
+
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content = "width=device-width, initial-scale=1.0">#}
+{#    {% if title %}#}
+{#    <title>{{ title }} - Local Artists</title>#}
+{#    {% else %}#}
+{#    <title>Local Artists</title>#}
+{#    {% endif %}#}
+{#</head>#}
+{#<body>#}
+{##}
+{##}
+{#    <h1>Artists Meet CS</h1>#}
+{#    <div>#}
+{#        {% if current_user.is_authenticated %}#}
+{#        <a href="/index">Home</a>#}
+{#        <a href="/artistlist">Artist List</a>#}
+{#        <a href="/CreateAnArtist">Create An Artist</a>#}
+{#        <a href="/CreateAnEvent">Create An Event</a>#}
+{#        <a href="/CreateAVenue">Create A Venue</a>#}
+{#        <a href="/logout">Log Out</a>#}
+{#        {% endif %}#}
+{#        {% if not current_user.is_authenticated %}#}
+{#        <a href="/login">Login</a>#}
+{#        <a href="/register">Register</a>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#    <hr>#}
+{#    {% with messages = get_flashed_messages() %}#}
+{#    {% if messages %}#}
+{#    <ul>#}
+{#        {% for message in messages %}#}
+{#            <li>{{ message }}</li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#    {% endif %}#}
+{#    {% endwith %}#}
+{#    {% block content %}{% endblock %}#}
+{#</body>#}
+{#</html>#}
