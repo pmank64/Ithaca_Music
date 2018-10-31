@@ -1,3 +1,4 @@
+{% extends "bootstrap/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,21 @@
     {% endif %}
 </head>
 <body>
+
     <h1>Artists Meet CS</h1>
     <div>
+        {% if current_user.is_authenticated %}
         <a href="/index">Home</a>
         <a href="/artistlist">Artist List</a>
         <a href="/CreateAnArtist">Create An Artist</a>
+        <a href="/CreateAnEvent">Create An Event</a>
+        <a href="/CreateAVenue">Create A Venue</a>
+        <a href="/logout">Log Out</a>
+        {% endif %}
+        {% if not current_user.is_authenticated %}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        {% endif %}
     </div>
     <hr>
     {% with messages = get_flashed_messages() %}

@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import EventToArtist, Artist, Event
+from app.models import Artist, Event
 
 
 @app.shell_context_processor
